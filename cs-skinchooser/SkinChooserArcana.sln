@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinChooserArcana", "SkinChooserArcana\SkinChooserArcana.csproj", "{6AF04199-4240-47ED-9080-FEBB7A450236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinChooserArcana.Tests", "SkinChooserArcana.Tests\SkinChooserArcana.Tests.csproj", "{98848361-7611-4BFD-8288-3739C0E7724E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6AF04199-4240-47ED-9080-FEBB7A450236} = {6AF04199-4240-47ED-9080-FEBB7A450236}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AF04199-4240-47ED-9080-FEBB7A450236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF04199-4240-47ED-9080-FEBB7A450236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF04199-4240-47ED-9080-FEBB7A450236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF04199-4240-47ED-9080-FEBB7A450236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98848361-7611-4BFD-8288-3739C0E7724E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98848361-7611-4BFD-8288-3739C0E7724E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98848361-7611-4BFD-8288-3739C0E7724E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98848361-7611-4BFD-8288-3739C0E7724E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E96B70B-3FEE-4630-AD18-DFF9049EF91C}
+	EndGlobalSection
+EndGlobal

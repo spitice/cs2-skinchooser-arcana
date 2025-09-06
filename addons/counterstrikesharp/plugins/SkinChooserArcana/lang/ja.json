@@ -1,0 +1,16 @@
+{
+  "SkinChooser.Reload.AlreadyReloading": "現在スキンデータを読込中。しばらくお待ち下さい",
+  "SkinChooser.Reload.CountDiff": "スキン数：{grey}{0}{default} → {green}{1}{default}",
+  "SkinChooser.Reload.SkinsAdded": "追加されたスキン：{green}{0}{default}",
+  "SkinChooser.Reload.NoSkinsAdded": "{grey}追加されたスキンはありません{default}",
+  "SkinChooser.Reload.SkinsRemoved": "削除されたスキン：{red}{0}{default}",
+  "SkinChooser.Reload.NoSkinsRemoved": "{grey}削除されたスキンはありません{default}",
+  "SkinChooser.Reload.SkinsModified": "変更されたスキン：{lightPurple}{0}{default}",
+  "SkinChooser.Reload.NoSkinsModified": "{grey}変更されたスキンはありません{default}",
+  "SkinChooser.Reload.Completed": "スキンデータの読み込みが完了。マップをリスタートすることで、すべてのスキンのプリキャッシュが行われます",
+  "SkinChooser.Skin.ClientOnly": "クライアントのみ !skin コマンドを実行できます",
+  "SkinChooser.Skin.NotFound": "スキン {red}{0}{default} は見つかりませんでした",
+  "SkinChooser.Skin.NotAllowed": "スキン {lightPurple}{0}{default} を使用する権限がありません",
+  "SkinChooser.Skin.Updated": "スキンを {green}{0}{default} に変更しました",
+  "SkinChooser.SkinList.AllSkins": "スキン一覧：{0}"
+}

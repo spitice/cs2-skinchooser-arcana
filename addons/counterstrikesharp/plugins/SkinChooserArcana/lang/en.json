@@ -1,0 +1,16 @@
+{
+  "SkinChooser.Reload.AlreadyReloading": "Reloading skin data. Please wait for completion.",
+  "SkinChooser.Reload.CountDiff": "Number of skins: {grey}{0}{default} -> {green}{1}{default}",
+  "SkinChooser.Reload.SkinsAdded": "Skins added: {green}{0}{default}",
+  "SkinChooser.Reload.NoSkinsAdded": "{grey}No skins added.{default}",
+  "SkinChooser.Reload.SkinsRemoved": "Skins removed: {red}{0}{default}",
+  "SkinChooser.Reload.NoSkinsRemoved": "{grey}No skins removed.{default}",
+  "SkinChooser.Reload.SkinsModified": "Skins modified: {lightPurple}{0}{default}",
+  "SkinChooser.Reload.NoSkinsModified": "{grey}No skins modified.{default}",
+  "SkinChooser.Reload.Completed": "Skin data has been reloaded. Please restart the map to precache all skin models.",
+  "SkinChooser.Skin.ClientOnly": "Only clients can execute skin command.",
+  "SkinChooser.Skin.NotFound": "Skin {red}{0}{default} not found.",
+  "SkinChooser.Skin.NotAllowed": "You have no persmission to use the skin {lightPurple}{0}{default}.",
+  "SkinChooser.Skin.Updated": "Your skin has been changed to {green}{0}{default}.",
+  "SkinChooser.SkinList.AllSkins": "All skins: {0}"
+}

@@ -1,0 +1,14 @@
+{
+  "skins": {
+    "foo": {
+        "name": "foo",
+        "ModelCT": "characters/models/myserver/foo/foo.vmdl",
+        "steamid": ""
+    },
+    "aina": {
+        "name": "bar",
+        "ModelCT": "characters/models/myserver/bar/bar.vmdl",
+        "steamid": "1234567890,2345678901"
+    }
+  }
+}

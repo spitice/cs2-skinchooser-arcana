@@ -1,0 +1,6 @@
+addons/counterstrikesharp/plugins/SkinChooserArcana/*.dll
+
+cs-skinchooser/.vs
+cs-skinchooser/*/.vs
+cs-skinchooser/*/bin
+cs-skinchooser/*/obj
