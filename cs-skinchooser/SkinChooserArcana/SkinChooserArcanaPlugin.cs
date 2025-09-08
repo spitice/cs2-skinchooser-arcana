@@ -32,10 +32,11 @@ namespace SkinChooserArcana
         private Dictionary<int, string> _playerSlotToOrigModel = new Dictionary<int, string>();
 
         public readonly FakeConVar<bool> IsModuleEnabled = new("skinchooser_enabled", "SkinChooser is enabled.", true);
+        public readonly FakeConVar<float> ConVar_ModelScale = new("skinchooser_modelscale", "The model scale factor for all skins.", 1.0f);
 
         public override void Load(bool hotReload)
         {
-            _sout = new Sout(Logger, Localizer, "SkinChooser", "SkinChooser", ChatColors.LightPurple);
+            _sout = new Sout(Logger, Localizer, "SkinChooser", "SkinChooser", ChatColors.Green);
             _db = new PlayerDatabase(Path.Join(ModuleDirectory, "database_SkinChooserArcana.db"), _sout);
 
             RegisterListener<Listeners.OnServerPrecacheResources>(OnServerPrecacheResources);
@@ -51,6 +52,31 @@ namespace SkinChooserArcana
                 else
                 {
                     DisableSkinInRound();
+                }
+            };
+
+            ConVar_ModelScale.ValueChanged += (sender, value) =>
+            {
+                foreach (var player in Utilities.GetPlayers())
+                {
+                    if (!player.IsValid)
+                        continue;
+
+                    if (!player.PawnIsAlive)
+                        continue;
+
+                    var pawn = player.Pawn.Get();
+
+                    if (pawn == null)
+                        continue;
+
+                    var skeleton = pawn.CBodyComponent?.SceneNode?.GetSkeletonInstance();
+
+                    if (skeleton == null)
+                        continue;
+
+                    skeleton.Scale = value;
+                    Utilities.SetStateChanged(pawn, "CBaseEntity", "m_CBodyComponent");
                 }
             };
         }
@@ -249,14 +275,31 @@ namespace SkinChooserArcana
                 return null;
             }
 
-            var oldModelName = pawn.CBodyComponent?.SceneNode?.GetSkeletonInstance().ModelState.ModelName;
-            if (oldModelName == skin.ModelName)
+            var skeleton = pawn.CBodyComponent?.SceneNode?.GetSkeletonInstance();
+            if (skeleton == null)
             {
                 return null;
             }
 
-            pawn.SetModel(skin.ModelName);
+            if (skeleton.Scale != ConVar_ModelScale.Value)
+            {
+                skeleton.Scale = ConVar_ModelScale.Value;
+            }
+
+            var oldModelName = skeleton.ModelState.ModelName;
+            if (oldModelName == skin.ModelName)
+            {
+                // Not changed
+                oldModelName = null;
+            }
+            else
+            { 
+                pawn.SetModel(skin.ModelName);
+            }
+
             Utilities.SetStateChanged(pawn, "CBaseEntity", "m_CBodyComponent");
+            
+
             return oldModelName;
         }
 

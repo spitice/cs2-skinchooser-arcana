@@ -30,7 +30,8 @@ namespace SkinChooserArcana.IO
             {
                 return text;
             }
-            return $"[{_chatMessagePrefixColor}{_messagePrefix}{ChatColors.Default}] {text}";
+            // Requires a leading space to apply custom color from the beginning of the chat message.
+            return $" {_chatMessagePrefixColor}[{_messagePrefix}]{ChatColors.Default} {text}";
         }
 
         public void ToPlayer(CCSPlayerController? player, string message, params object[] args)
