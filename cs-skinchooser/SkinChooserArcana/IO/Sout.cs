@@ -90,6 +90,12 @@ namespace SkinChooserArcana.IO
         {
             foreach (var player in Utilities.GetPlayers().Where(x => x.IsValid))
             {
+                if (!player.IsValid)
+                    continue;
+
+                if (player.IsBot)
+                    continue;
+
                 ToPlayerImpl(player, message, args, isPrefix);
             }
         }
