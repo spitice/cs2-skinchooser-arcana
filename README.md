@@ -43,6 +43,8 @@ ConVars
 	- You can change this ConVar during the round so the player models will be immediately swapped.
 - `skinchooser_modelscale 1.0`
 	- Changed player model scale
+- `skinchooser_gamemode <gamemode>`
+  - The current game mode. Use if skins have alternative skin for the specific game mode.
 
 ## Database
 

@@ -9,8 +9,12 @@
   "SkinChooser.Reload.NoSkinsModified": "{grey}No skins modified.{default}",
   "SkinChooser.Reload.Completed": "Skin data has been reloaded. Please restart the map to precache all skin models.",
   "SkinChooser.Skin.ClientOnly": "Only clients can execute skin command.",
+  "SkinChooser.Skin.CurrentSkin": "Current skin: {green}{0}{default}",
+  "SkinChooser.Skin.CurrentSkinDefault": "Current skin: {grey}Default{default}",
+  "SkinChooser.Skin.HowToReset": "Say \"!skin default\" to reset your skin.",
   "SkinChooser.Skin.NotFound": "Skin {red}{0}{default} not found.",
   "SkinChooser.Skin.NotAllowed": "You have no persmission to use the skin {lightPurple}{0}{default}.",
   "SkinChooser.Skin.Updated": "Your skin has been changed to {green}{0}{default}.",
+  "SkinChooser.Skin.UsingAlternative": "Using alternative skin for this game mode: {grey}{0}{default} -> {orange}{1}{default}",
   "SkinChooser.SkinList.AllSkins": "All skins: {0}"
 }

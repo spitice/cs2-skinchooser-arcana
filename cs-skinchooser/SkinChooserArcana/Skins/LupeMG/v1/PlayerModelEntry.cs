@@ -6,6 +6,8 @@
 
         public required string ModelCT { get; set; }
 
+        public Dictionary<string, string>? gamemodes { get; set; }
+
         public string? steamid { get; set; }
 
         public SkinDescriptor ToSkinDescriptor()
@@ -25,6 +27,7 @@
                 Id = name,
                 ModelName = ModelCT,
                 AllowedPlayerIds = allowedPlayerIds,
+                GameModes = gamemodes ?? new Dictionary<string, string>(),
             };
         }
     }

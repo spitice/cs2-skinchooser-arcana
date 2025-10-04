@@ -9,6 +9,8 @@ namespace SkinChooserArcana.Skins
 
         public HashSet<ulong>? AllowedPlayerIds { get; set; } = null;
 
+        public Dictionary<string, string> GameModes { get; set; } = new Dictionary<string, string>();
+
         public bool IsPlayerAllowedToUse(ulong id)
         {
             if (AllowedPlayerIds == null)
@@ -49,12 +51,27 @@ namespace SkinChooserArcana.Skins
                 return false;
 
             if (AllowedPlayerIds == null)
-                return other.AllowedPlayerIds == null;
+            {
+                if (other.AllowedPlayerIds != null)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (other.AllowedPlayerIds == null)
+                {
+                    return false;
+                }
 
-            if (other.AllowedPlayerIds == null)
-                return false;
+                if (!AllowedPlayerIds.SetEquals(other.AllowedPlayerIds))
+                {
+                    return false;
+                }
+            }
 
-            if (!AllowedPlayerIds.SetEquals(other.AllowedPlayerIds))
+            if (!(GameModes.Count == other.GameModes.Count &&
+                GameModes.All(p => other.GameModes.ContainsKey(p.Key) && other.GameModes[p.Key] == p.Value)))
                 return false;
 
             return true;

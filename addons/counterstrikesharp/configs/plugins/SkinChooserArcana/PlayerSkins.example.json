@@ -1,14 +1,22 @@
 {
   "skins": {
     "foo": {
-        "name": "foo",
-        "ModelCT": "characters/models/myserver/foo/foo.vmdl",
-        "steamid": ""
+      "name": "foo",
+      "ModelCT": "characters/models/myserver/foo/foo.vmdl",
+      "steamid": ""
     },
-    "aina": {
-        "name": "bar",
-        "ModelCT": "characters/models/myserver/bar/bar.vmdl",
-        "steamid": "1234567890,2345678901"
+    "bar": {
+      "name": "bar",
+      "ModelCT": "characters/models/myserver/bar/bar.vmdl",
+      "steamid": "1234567890,2345678901"
+    },
+    "baz": {
+      "name": "baz",
+      "ModelCT": "characters/models/myserver/baz/baz.vmdl",
+      "steamid": "",
+      "gamemodes": {
+        "pvp": "foo"
+      }
     }
   }
 }

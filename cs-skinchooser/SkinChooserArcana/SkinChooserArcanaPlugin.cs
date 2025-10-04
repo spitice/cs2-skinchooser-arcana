@@ -16,7 +16,7 @@ namespace SkinChooserArcana
     public class SkinChooserArcanaPlugin: BasePlugin, IPluginConfig<SkinChooserArcanaConfig>
     {
         public override string ModuleName => "SkinChooser Arcana";
-        public override string ModuleVersion => "1.0.0";
+        public override string ModuleVersion => "1.1.0";
         public override string ModuleAuthor => "Spitice";
         public override string ModuleDescription => "A player model changer plugin for Lupercalia MG server.";
 
@@ -33,6 +33,7 @@ namespace SkinChooserArcana
 
         public readonly FakeConVar<bool> IsModuleEnabled = new("skinchooser_enabled", "SkinChooser is enabled.", true);
         public readonly FakeConVar<float> ConVar_ModelScale = new("skinchooser_modelscale", "The model scale factor for all skins.", 1.0f);
+        public readonly FakeConVar<string> ConVar_GameMode = new("skinchooser_gamemode", "The current game mode. Use if skins have alternative skin for the specific game mode.", "");
 
         public override void Load(bool hotReload)
         {
@@ -78,6 +79,12 @@ namespace SkinChooserArcana
                     skeleton.Scale = value;
                     Utilities.SetStateChanged(pawn, "CBaseEntity", "m_CBodyComponent");
                 }
+            };
+
+            ConVar_GameMode.ValueChanged += (sender, value) =>
+            {
+                DisableSkinInRound();
+                EnableSkinInRound();
             };
         }
 
@@ -189,11 +196,27 @@ namespace SkinChooserArcana
                 return;
             }
 
-            var skinName = "";  // The default skin
-            if (commandInfo.ArgCount >= 1)
+            if (commandInfo.ArgCount == 1)
             {
-                skinName = commandInfo.GetArg(1).ToLower();
+                var currentSkinName = _db.GetSkinForPlayer(player.SteamID);
+                if (currentSkinName == "")
+                {
+                    _sout.ToPlayer(player, "Skin.CurrentSkinDefalt");
+                }
+                else
+                {
+                    _sout.ToPlayer(player, "Skin.CurrentSkin", currentSkinName);
+                    _sout.ToPlayer(player, "Skin.HowToReset");
+                }
+                return;
             }
+
+            var skinName = commandInfo.GetArg(1).ToLower();
+            if (skinName == "default")
+            {
+                skinName = "";
+            }
+
             SetPlayerSkin(player, skinName);
         }
 
@@ -256,7 +279,7 @@ namespace SkinChooserArcana
             ApplyPlayerSkinModelToPawn(player, skinName);
         }
 
-        private string? ApplyPlayerSkinModelToPawn(CCSPlayerController player, string skinName)
+        private string? ApplyPlayerSkinModelToPawn(CCSPlayerController player, string skinName, bool checkGameMode = true)
         {
             if (skinName == "")
             {
@@ -267,6 +290,17 @@ namespace SkinChooserArcana
             if (skin == null)
             {
                 return null;
+            }
+
+            // Check if the skin has an alternative for the current game mode
+            if (checkGameMode)
+            {
+                var alternativeSkinName = "";
+                if (skin.GameModes.TryGetValue(ConVar_GameMode.Value, out alternativeSkinName))
+                {
+                    _sout.ToPlayer(player, "Skin.UsingAlternative", skinName, alternativeSkinName);
+                    return ApplyPlayerSkinModelToPawn(player, alternativeSkinName, false);
+                }
             }
 
             var pawn = player.PlayerPawn.Get();

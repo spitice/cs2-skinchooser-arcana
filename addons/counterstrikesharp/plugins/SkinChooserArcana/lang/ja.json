@@ -9,8 +9,12 @@
   "SkinChooser.Reload.NoSkinsModified": "{grey}変更されたスキンはありません{default}",
   "SkinChooser.Reload.Completed": "スキンデータの読み込みが完了。マップをリスタートすることで、すべてのスキンのプリキャッシュが行われます",
   "SkinChooser.Skin.ClientOnly": "クライアントのみ !skin コマンドを実行できます",
+  "SkinChooser.Skin.CurrentSkin": "現在のスキン：{green}{0}{default}",
+  "SkinChooser.Skin.CurrentSkinDefault": "現在のスキン： {grey}デフォルト{default}",
+  "SkinChooser.Skin.HowToReset": "\"!skin default\" と入力することでスキンをリセット出来ます",
   "SkinChooser.Skin.NotFound": "スキン {red}{0}{default} は見つかりませんでした",
   "SkinChooser.Skin.NotAllowed": "スキン {lightPurple}{0}{default} を使用する権限がありません",
   "SkinChooser.Skin.Updated": "スキンを {green}{0}{default} に変更しました",
+  "SkinChooser.Skin.UsingAlternative": "ゲームモード設定により代替スキンを使用中：{grey}{0}{default} → {orange}{1}{default}",
   "SkinChooser.SkinList.AllSkins": "スキン一覧：{0}"
 }

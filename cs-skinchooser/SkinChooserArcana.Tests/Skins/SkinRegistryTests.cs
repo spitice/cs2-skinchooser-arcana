@@ -27,5 +27,22 @@ namespace SkinChooserArcana.Tests.Skins
             Assert.True(diff.RemovedSkins.SequenceEqual(["baz"]));
             Assert.True(diff.ModifiedSkins.SequenceEqual(["foo"]));
         }
+
+        [Fact]
+        public void ShouldGenerateRegistryDiffByModifiedGameMode()
+        {
+            var oldReg = new SkinRegistry();
+            var newReg = new SkinRegistry();
+
+            oldReg.Skins["foo"] = new SkinDescriptor() { Id = "foo" };
+            newReg.Skins["foo"] = new SkinDescriptor() { Id = "foo" };
+
+            oldReg.Skins["foo"].GameModes["pvp"] = "bar";
+            newReg.Skins["foo"].GameModes["pvp"] = "baz";
+
+            var diff = SkinRegistry.GenerateSkinRegistryDiff(oldReg, newReg);
+
+            Assert.True(diff.ModifiedSkins.SequenceEqual(["foo"]));
+        }
     }
 }
